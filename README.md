@@ -2,7 +2,11 @@
 A working Solana travel-vault MVP with a React dashboard, a clearly labeled browser demo, and a real Anchor program.
 
 ## Open the app
+Website: https://ryuuseiwa.github.io/roamsafe/
+Source: https://github.com/ryuuseiwa/roamsafe
+
 Local dashboard: http://localhost:5173
+Automatic hosting setup and update instructions: [GITHUB_PAGES.md](GITHUB_PAGES.md).
 
 The default **Demo mode** starts a Tokyo trip with 1,000 simulated tokens, a 150-token daily limit, a 100-token payment cap, and a 200-token emergency reserve. State persists in this browser.
 
