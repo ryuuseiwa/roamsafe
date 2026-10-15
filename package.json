@@ -11,7 +11,8 @@
     "build": "npm run typecheck && vite build",
     "demo:setup": "ts-node client/setup-demo.ts",
     "test:render": "node scripts/smoke.mjs",
-    "test:model": "tsc -p tsconfig.json --outDir target/ts && mocha target/ts/tests/model.js"
+    "test:model": "tsc -p tsconfig.json --outDir target/ts && mocha target/ts/tests/model.js",
+    "devnet:tokens": "ts-node client/devnet-tokens.ts"
   },
   "dependencies": {
     "@anchor-lang/core": "1.2.0",

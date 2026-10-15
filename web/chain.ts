@@ -2,6 +2,7 @@ import { AnchorProvider, BN, Program, Idl } from "@anchor-lang/core";
 import { Connection, PublicKey, SystemProgram, Transaction, VersionedTransaction } from "@solana/web3.js";
 import { getAccount, getMint, getAssociatedTokenAddress, createAssociatedTokenAccountIdempotentInstruction, TOKEN_PROGRAM_ID, ASSOCIATED_TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import idl from "./idl.json";
+import deployment from "./deployment.json";
 import { Trip } from "./model";
 
 export type InjectedWallet = {
@@ -14,8 +15,8 @@ export type InjectedWallet = {
   removeListener?(event: string, callback: (...args: any[]) => void): void;
 };
 const env = (import.meta as any).env;
-export const rpc: string = env.VITE_RPC_URL || "http://127.0.0.1:8899";
-export const configuredMint: string = env.VITE_TOKEN_MINT || "";
+export const rpc: string = env.VITE_RPC_URL || (env.PROD ? deployment.rpcUrl : "http://127.0.0.1:8899");
+export const configuredMint: string = env.VITE_TOKEN_MINT || (env.PROD ? deployment.mint : "");
 export const programId = idl.address;
 export function injected(): InjectedWallet | undefined {
   return (window as any).phantom?.solana ?? (window as any).solflare ?? (window as any).solana;

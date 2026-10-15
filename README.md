@@ -87,13 +87,35 @@ The 24-hour window begins at start_ts. After expiry, the first successful paymen
 
 Recovery permissions do not authorize spending. A guardian cannot choose a different recovery destination. Locking cannot be undone.
 
-## Devnet
-Localnet is the default. After local tests pass, deploy explicitly to devnet:
+## Devnet deployment
+The program is deployed to Solana devnet. The deployed bytes were downloaded and compared with the tested binary.
+
+- Program: 9d1YyXHPkycnLJ2TCBnGGsiZ5kuZht8yN1TG9JSJmbYf
+- Explorer: https://explorer.solana.com/address/9d1YyXHPkycnLJ2TCBnGGsiZ5kuZht8yN1TG9JSJmbYf?cluster=devnet
+- Test mint: J442QCiHJ7S3CYDPyFaLSRyeAvyHk62m42CZWoGJFTyA (6 decimals; not USDC)
+- Public deployment configuration: web/deployment.json
+- Production builds default to devnet. Local development still defaults to localnet unless VITE_RPC_URL overrides it.
+- The complete wallet-client lifecycle passed on devnet, including guardian recovery and account closure.
+
+To give a browser wallet test tokens, use the CLI mint authority already on this PC:
 ```bash
-solana balance --url devnet
+source ~/.nvm/nvm.sh
+cd /mnt/c/Dan/download/solana/roamsafe
+npm run devnet:tokens -- YOUR_PHANTOM_OR_SOLFLARE_PUBLIC_ADDRESS
+```
+Then choose Devnet in your wallet and obtain a small amount of devnet SOL for fees. The devnet:tokens script only mints test tokens; it does not transfer SOL to that browser wallet. The mint authority stays in your local CLI wallet and is never uploaded to the dashboard.
+
+To verify the deployed program again:
+```bash
+node scripts/test-client.mjs --devnet
+```
+The test uses devnet test tokens and pays a test merchant 25 tokens, then recovers and closes its temporary trip. Unused guardian devnet SOL is returned to the CLI wallet.
+
+To redeploy a later program build:
+```bash
 solana program deploy --url devnet --program-id target/deploy/roamsafe-keypair.json target/deploy/roamsafe.so
 ```
-Use devnet SOL only. Set VITE_RPC_URL and VITE_TOKEN_MINT to a funded, six-decimal legacy SPL test mint on devnet before building or restarting the dashboard. There is no mainnet deployment in this project.
+There is no mainnet deployment.
 
 ## Project layout
 - programs/roamsafe/src/ — Anchor accounts, policies, instructions, and events

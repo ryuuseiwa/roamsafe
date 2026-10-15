@@ -12,6 +12,7 @@ Verified on October 15, 2026, on this Windows PC using Ubuntu/WSL, Node 24.10.0,
 - AI110 PawPal repository: unchanged.
 - Browser interaction and visual QA: not verified; no browser connection was available.
 - Hosted publication: pending explicit permission to upload source to the private Sites repository. No application source was uploaded.
+- Devnet: program deployed; downloaded binary matches the tested build. Full dashboard wallet-client lifecycle passed on devnet.
 - Mainnet: no deployment or mainnet transactions.
 
 Run scripts/test-client.mjs only while scripts/localnet.sh is running. It uses local test funds and the local CLI wallet. Stop that validator before running the isolated Anchor test suite.
