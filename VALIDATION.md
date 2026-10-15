@@ -11,7 +11,7 @@ Verified on October 15, 2026, on this Windows PC using Ubuntu/WSL, Node 24.10.0,
 - Local HTTP response: 200.
 - AI110 PawPal repository: unchanged.
 - Browser interaction and visual QA: not verified; no browser connection was available.
-- Hosted publication: pending explicit permission to upload source to the private Sites repository. No application source was uploaded.
+- Hosted publication: owner approved source upload and private dashboard publication. The Sites deployment record identifies the published source commit and live status.
 - Devnet: program deployed; downloaded binary matches the tested build. Full dashboard wallet-client lifecycle passed on devnet.
 - Mainnet: no deployment or mainnet transactions.
 
