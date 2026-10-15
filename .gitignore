@@ -1,0 +1,13 @@
+node_modules/
+target/
+.anchor/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+
+
+course-notes.txt
+
+scripts/read-course.py
